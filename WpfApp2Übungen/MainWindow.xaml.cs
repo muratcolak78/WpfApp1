@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,11 @@ namespace WpfApp2Übungen
     /// </summary>
     public partial class MainWindow : Window
     {
-        string ertsteNummer = "";
-        List<string> nummern=new List<string>();
+        string ErtsteNummer = "";
+        string zweitenummer = ";";
+        string temporay = "";
+        string operation = "";
+        List<string> list=new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -25,94 +29,148 @@ namespace WpfApp2Übungen
 
         private void _0_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "0";
-            txtblc.Text=ertsteNummer;
+            nummerUndTxtEinstellung("0");
         }
 
         private void _1_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "1";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("1");
         }
 
         private void _2_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "2";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("2");
         }
 
         private void _3_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "3";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("3");
         }
 
         private void _4_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "4";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("4");
         }
 
         private void _5_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "5";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("5");
         }
 
         private void _6_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "6";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("6");
         }
 
         private void _7_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "7";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("7");
         }
 
         private void _8_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "8";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("8");
         }
 
         private void _9_Click(object sender, RoutedEventArgs e)
         {
-            ertsteNummer += "9";
-            txtblc.Text = ertsteNummer;
+            nummerUndTxtEinstellung("0");
+        }
+
+        private void koma_Click(object sender, RoutedEventArgs e)
+        {
+            nummerUndTxtEinstellung(".");
         }
 
         private void plus_Click(object sender, RoutedEventArgs e)
         {
-            nummern.Add(ertsteNummer);
-            nummern.Add("+");
-            ertsteNummer = "";
+            einstellungOperation("+");
+        }
+        private void minus_Click(object sender, RoutedEventArgs e)
+        {
+            einstellungOperation("-");
+        }
+
+        private void mal_Click(object sender, RoutedEventArgs e)
+        {
+            einstellungOperation("*");
+        }
+
+        private void divide_Click(object sender, RoutedEventArgs e)
+        {
+            einstellungOperation("/");
+        }
+
+        private string  printList()
+        {
+            string x = "";
+            list.ForEach(p=>
+            {
+                x += p;
+            });
+            return x;
         }
 
         private void gleich_Click(object sender, RoutedEventArgs e)
         {
-            nummern.Add(ertsteNummer);
-            ertsteNummer = "";
-            txtblc.Text = rechnung(nummern);
-
+            temporay += "=";
+            temporay += Rechnung();
+            txtblc.Text= temporay;
+           
         }
-        private string rechnung(List<string> list)
+        private string Rechnung()
         {
-            string ergebnis = "";
-            if (list.Contains("+"))
-            {
-                list.Remove("+");
-                double zahl1 = double.Parse(list[0]);
-                double zahl2 = double.Parse(list[1]);
-                double ergebnisDouble=zahl1+ zahl2;
-                ergebnis=ergebnisDouble.ToString();
 
-            }
+            list.Add(ErtsteNummer);
+            double ergebnisDouble = 0.0;
+            double zahl1 = double.Parse(list[list.Count() - 1]);
 
-            return ergebnis;
+
+            double zahl2 = double.Parse(list[list.Count() - 2]);
+
+            if (operation == "+") ergebnisDouble = zahl1 + zahl2;
+            else if (operation == "-") ergebnisDouble = zahl1 - zahl2;
+            else if (operation == "*") ergebnisDouble = zahl1 * zahl2;
+            else if (operation == "/") ergebnisDouble = zahl1 / zahl2;
+            
+            txtblc2.Text = printList();
+            list.Clear();
+            list.Add(ergebnisDouble.ToString());
+            txtblc2.Text = printList();
+            
+            return  ergebnisDouble.ToString();
+
         }
 
+        private void AC_Click(object sender, RoutedEventArgs e)
+        {
+          list.Clear();
+            ErtsteNummer = "";
+            temporay = "";
+            txtblc.Text = "0";
+        }
 
+       
+        private void einstellungOperation(string oper)
+        {
+            list.Add(ErtsteNummer);
+            temporay += oper;
+            txtblc.Text = temporay;
+            txtblc2.Text = printList();
+            ErtsteNummer = "";
+            operation = oper;
+            if (list.Count==2)
+            {
+                temporay += "=";
+                temporay += Rechnung();
+                txtblc.Text = temporay;
+            }
+        }
+        private void nummerUndTxtEinstellung(string zeigen)
+        {
+            ErtsteNummer += zeigen;
+            temporay += zeigen;
+            txtblc.Text = temporay;
+        }
     }
 }

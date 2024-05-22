@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,7 +19,7 @@ namespace WpfApp2Übungen
     public partial class MainWindow : Window
     {
         string ErtsteNummer = "";
-        string zweitenummer = ";";
+        string zweitenummer = "";
         string temporay = "";
         string operation = "";
         List<string> list=new List<string>();
@@ -29,78 +30,19 @@ namespace WpfApp2Übungen
 
         private void _0_Click(object sender, RoutedEventArgs e)
         {
-            nummerUndTxtEinstellung("0");
-        }
-
-        private void _1_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("1");
-        }
-
-        private void _2_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("2");
-        }
-
-        private void _3_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("3");
-        }
-
-        private void _4_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("4");
-        }
-
-        private void _5_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("5");
-        }
-
-        private void _6_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("6");
-        }
-
-        private void _7_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("7");
-        }
-
-        private void _8_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("8");
-        }
-
-        private void _9_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung("0");
-        }
-
-        private void koma_Click(object sender, RoutedEventArgs e)
-        {
-            nummerUndTxtEinstellung(".");
+            Button clickedButton = sender as Button;
+            string buttonText = clickedButton.Content.ToString();
+            nummerUndTxtEinstellung(buttonText);
+            txtblc2.Text = buttonText;
         }
 
         private void plus_Click(object sender, RoutedEventArgs e)
         {
-            einstellungOperation("+");
+            Button clickedButton = sender as Button;
+            string buttonText = clickedButton.Content.ToString();
+            einstellungOperation(buttonText);
         }
-        private void minus_Click(object sender, RoutedEventArgs e)
-        {
-            einstellungOperation("-");
-        }
-
-        private void mal_Click(object sender, RoutedEventArgs e)
-        {
-            einstellungOperation("*");
-        }
-
-        private void divide_Click(object sender, RoutedEventArgs e)
-        {
-            einstellungOperation("/");
-        }
-
+        
         private string  printList()
         {
             string x = "";
@@ -123,14 +65,14 @@ namespace WpfApp2Übungen
 
             list.Add(ErtsteNummer);
             double ergebnisDouble = 0.0;
-            double zahl1 = double.Parse(list[list.Count() - 1]);
+            double zahl1 = double.Parse(list[list.Count() - 2]);
 
 
-            double zahl2 = double.Parse(list[list.Count() - 2]);
+            double zahl2 = double.Parse(list[list.Count() - 1]);
 
             if (operation == "+") ergebnisDouble = zahl1 + zahl2;
             else if (operation == "-") ergebnisDouble = zahl1 - zahl2;
-            else if (operation == "*") ergebnisDouble = zahl1 * zahl2;
+            else if (operation == "x") ergebnisDouble = zahl1 * zahl2;
             else if (operation == "/") ergebnisDouble = zahl1 / zahl2;
             
             txtblc2.Text = printList();
@@ -149,28 +91,30 @@ namespace WpfApp2Übungen
             temporay = "";
             txtblc.Text = "0";
         }
-
-       
+               
         private void einstellungOperation(string oper)
         {
-            list.Add(ErtsteNummer);
-            temporay += oper;
-            txtblc.Text = temporay;
-            txtblc2.Text = printList();
-            ErtsteNummer = "";
-            operation = oper;
-            if (list.Count==2)
+
+            if (ErtsteNummer.Length == 0) txtblc.Text = "0";
+            else if (list.Count == 0)
             {
-                temporay += "=";
-                temporay += Rechnung();
+
+                list.Add(ErtsteNummer);
+                temporay += oper;
                 txtblc.Text = temporay;
+                txtblc2.Text = printList();
+                zweitenummer = ErtsteNummer;
+                ErtsteNummer = "";
+                operation = oper;
             }
         }
         private void nummerUndTxtEinstellung(string zeigen)
         {
-            ErtsteNummer += zeigen;
-            temporay += zeigen;
-            txtblc.Text = temporay;
+            
+                ErtsteNummer += zeigen;
+                temporay += zeigen;
+                txtblc.Text = temporay;
+           
         }
     }
 }

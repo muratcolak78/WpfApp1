@@ -5,35 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2Übungen"
         mc:Ignorable="d"
-        Title="Übungen" Height="500" Width="320">
+        Title="Übungen" Height="600" Width="320">
     <Grid>
         <TabControl Margin="-1,0,1,0" FontSize="24" FontFamily="Arial Black">
 
             <TabItem Header="Tascherrechner">
                 <Grid Background="#FF1385DC" Margin="-2,0,-3,0">
-                    <Button x:Name="_7" Content="7" HorizontalAlignment="Left" Margin="36,93,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <TextBlock x:Name="txtblc" HorizontalAlignment="Left" Margin="36,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Height="60" FontSize="24" TextAlignment="Right" Text="0" FontWeight="Bold" Background="Black" Foreground="#FF27D278" FontFamily="Arial Black"/>
-                    <Button x:Name="_8" Content="8" HorizontalAlignment="Left" Margin="99,93,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_9" Content="9" HorizontalAlignment="Left" Margin="160,93,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_4" Content="4" HorizontalAlignment="Left" Margin="36,149,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_5" Content="5" HorizontalAlignment="Left" Margin="99,149,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_6" Content="6" HorizontalAlignment="Left" Margin="160,149,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_1" Content="1" HorizontalAlignment="Left" Margin="36,203,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_2" Content="2" HorizontalAlignment="Left" Margin="99,203,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_3" Content="3" HorizontalAlignment="Left" Margin="160,203,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="36,262,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="koma" Content="." HorizontalAlignment="Left" Margin="98,262,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="_0_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="gleich" Content="=" HorizontalAlignment="Left" Margin="159,262,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="gleich_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="divide" Content="/" HorizontalAlignment="Left" Margin="219,93,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="plus_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="mal" Content="x" HorizontalAlignment="Left" Margin="219,149,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="plus_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="minus" Content="-" HorizontalAlignment="Left" Margin="219,203,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="plus_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <Button x:Name="plus" Content="+" HorizontalAlignment="Left" Margin="218,262,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="plus_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
-                    <TextBlock x:Name="txtblc2" HorizontalAlignment="Left" Margin="366,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="252" Width="216"/>
-                    <Button x:Name="AC" Content="AC" HorizontalAlignment="Left" Margin="159,321,0,0" VerticalAlignment="Top" Width="108" Height="42" FontWeight="Bold" FontSize="24" Click="AC_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_7" Content="7" HorizontalAlignment="Left" Margin="36,151,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <TextBlock x:Name="txtblc" HorizontalAlignment="Left" Margin="36,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Height="60" FontSize="24" TextAlignment="Right" Text="0" FontWeight="Bold" Background="Black" Foreground="#FF27D278" FontFamily="Arial Black"/>
+                    <Button x:Name="_8" Content="8" HorizontalAlignment="Left" Margin="91,151,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_9" Content="9" HorizontalAlignment="Left" Margin="146,151,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_4" Content="4" HorizontalAlignment="Left" Margin="36,201,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_5" Content="5" HorizontalAlignment="Left" Margin="91,201,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_6" Content="6" HorizontalAlignment="Left" Margin="146,201,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_1" Content="1" HorizontalAlignment="Left" Margin="36,254,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_2" Content="2" HorizontalAlignment="Left" Margin="91,254,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_3" Content="3" HorizontalAlignment="Left" Margin="146,254,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="36,307,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="koma" Content="." HorizontalAlignment="Left" Margin="90,307,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="number_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="gleich" Content="=" HorizontalAlignment="Left" Margin="145,307,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="gleich_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="divide" Content="/" HorizontalAlignment="Left" Margin="201,151,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="opration_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="mal" Content="x" HorizontalAlignment="Left" Margin="201,201,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="opration_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="minus" Content="-" HorizontalAlignment="Left" Margin="201,254,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="opration_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="plus" Content="+" HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top" Height="45" Width="49" FontSize="24" FontWeight="Bold" Click="opration_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <Button x:Name="AC" Content="AC" HorizontalAlignment="Left" Margin="159,366,0,0" VerticalAlignment="Top" Width="108" Height="42" FontWeight="Bold" FontSize="24" Click="AC_Click" Background="#FF130000" FontStyle="Italic" Foreground="#FFF5F0F0" FontFamily="Arial Black"/>
+                    <TextBlock x:Name="txtlck2" HorizontalAlignment="Left" Margin="36,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Height="62" Background="Black" Foreground="#FF27D278" TextAlignment="Right" Text="0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Paledrom">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtPaledrom" HorizontalAlignment="Center" Margin="0,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="294"/>
+                    <Button Content="is paledrom" HorizontalAlignment="Left" Margin="98,97,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Click="Button_Click"/>
+                    <Label Content="" Name="lbltextContent" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" />
+                    <Label Content="" Name="lblErgebniss" HorizontalAlignment="Center" Margin="15,209,0,0" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
         </TabControl>
 

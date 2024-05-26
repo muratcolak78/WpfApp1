@@ -2,6 +2,7 @@
 using System.Diagnostics.Eventing.Reader;
 using System.Text;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WpfApp2Übungen
 {
@@ -19,102 +21,122 @@ namespace WpfApp2Übungen
     public partial class MainWindow : Window
     {
         string ErtsteNummer = "";
-        string zweitenummer = "";
-        string temporay = "";
         string operation = "";
-        List<string> list=new List<string>();
+        string temporary = "";
+        List<string> list1=new List<string>();
+        
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void _0_Click(object sender, RoutedEventArgs e)
+        private void number_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
             string buttonText = clickedButton.Content.ToString();
-            nummerUndTxtEinstellung(buttonText);
-            txtblc2.Text = buttonText;
+            if(txtblc.Text=="0") temporary = buttonText;
+            else temporary += buttonText;
+            txtblc. Text = temporary;
+            ErtsteNummer += buttonText;
+           
+
         }
 
-        private void plus_Click(object sender, RoutedEventArgs e)
+        private void opration_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
             string buttonText = clickedButton.Content.ToString();
-            einstellungOperation(buttonText);
+            temporary += buttonText;
+            txtblc.Text = temporary;
+            operation = buttonText;
+            if (list1.Count==0) {
+                list1.Add(ErtsteNummer);
+
+            } 
+            ErtsteNummer = "";
+         
+
         }
         
-        private string  printList()
-        {
-            string x = "";
-            list.ForEach(p=>
-            {
-                x += p;
-            });
-            return x;
-        }
 
         private void gleich_Click(object sender, RoutedEventArgs e)
         {
-            temporay += "=";
-            temporay += Rechnung();
-            txtblc.Text= temporay;
+           
+            list1.Add(ErtsteNummer);
+           
+            string ergebniss = Rechnung();
+            txtlck2.Text = ergebniss;
            
         }
+
         private string Rechnung()
         {
-
-            list.Add(ErtsteNummer);
+            //list1.Add(ErtsteNummer);
             double ergebnisDouble = 0.0;
-            double zahl1 = double.Parse(list[list.Count() - 2]);
+            double zahl1 = double.Parse(list1[list1.Count()-2 ]);
 
 
-            double zahl2 = double.Parse(list[list.Count() - 1]);
+            double zahl2 = double.Parse(list1[list1.Count()-1]);
 
             if (operation == "+") ergebnisDouble = zahl1 + zahl2;
             else if (operation == "-") ergebnisDouble = zahl1 - zahl2;
             else if (operation == "x") ergebnisDouble = zahl1 * zahl2;
             else if (operation == "/") ergebnisDouble = zahl1 / zahl2;
-            
-            txtblc2.Text = printList();
-            list.Clear();
-            list.Add(ergebnisDouble.ToString());
-            txtblc2.Text = printList();
-            
+
+            list1.Clear();
+            list1.Add(ergebnisDouble.ToString());
+
             return  ergebnisDouble.ToString();
 
         }
 
         private void AC_Click(object sender, RoutedEventArgs e)
         {
-          list.Clear();
+          list1.Clear();
             ErtsteNummer = "";
-            temporay = "";
+            txtlck2.Text = "0";
             txtblc.Text = "0";
+            temporary="0";
         }
-               
-        private void einstellungOperation(string oper)
-        {
 
-            if (ErtsteNummer.Length == 0) txtblc.Text = "0";
-            else if (list.Count == 0)
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string text=txtPaledrom.Text;
+            if (text!="")
             {
+                if (isPaledrom(text))
+                {
 
-                list.Add(ErtsteNummer);
-                temporay += oper;
-                txtblc.Text = temporay;
-                txtblc2.Text = printList();
-                zweitenummer = ErtsteNummer;
-                ErtsteNummer = "";
-                operation = oper;
+                    sekillendir(Brushes.Green, "True");
+
+                }
+                else
+                {
+                    sekillendir(Brushes.Red, "False");
+                }
             }
-        }
-        private void nummerUndTxtEinstellung(string zeigen)
-        {
-            
-                ErtsteNummer += zeigen;
-                temporay += zeigen;
-                txtblc.Text = temporay;
            
         }
+        private bool isPaledrom(string text)
+        {
+            char[] list= text.ToCharArray();
+            int lastIndex=list.Length-1;
+           for (int i=0;i<list.Length/2;i++)
+            {
+                if (list[i] != list[lastIndex]) return false;
+                lastIndex--;
+            }
+
+           return true;
+           
+        }
+        private  void sekillendir(SolidColorBrush brus, string text)
+        {
+            lbltextContent.Content = txtPaledrom.Text;
+            lblErgebniss.Foreground = brus;
+            lblErgebniss.Content = text;
+            txtPaledrom.Text = "";
+        }   
     }
 }

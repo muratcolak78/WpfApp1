@@ -1,3 +1,5 @@
+Warum wurde dieses Programm geschrieben?
+
 Mit einem Taschenrechner können verschiedene mathematische Operationen  ausgeführt werden. 
 Grundlegende mathematische Operationen
 Addition: Summe von zwei oder mehr Zahlen.
